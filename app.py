@@ -9,7 +9,7 @@ app.config['MONGO_URI'] = 'mongodb://mongodb:27017/phonebook'
 
 mongo = PyMongo(app)
 
-@app.route('/', methods=['GET'])
+@app.route('/phonebook', methods=['GET'])
 def list():
   phones = mongo.db.phones
   result = []
@@ -17,7 +17,7 @@ def list():
     result.append({'name' : i['name'], 'phone' : i['phone']})
   return jsonify({'result' : result})
 
-@app.route('/', methods=['POST'])
+@app.route('/phonebook', methods=['POST'])
 def add():
   phones = mongo.db.phones
   name = request.json['name']
