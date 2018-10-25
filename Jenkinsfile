@@ -1,6 +1,6 @@
 def dockerRegistry = 'https://index.docker.io'
 def dockerRegistryCredKey = 'docker-registry'
-def dockerRepo = 'app'
+def dockerRepo = 'cvierinix'
 
 
 node () {
@@ -15,7 +15,7 @@ node () {
 
   stage('Dockerize') {
     docker.withRegistry(dockerRegistry, dockerRegistryCredKey) {
-      def serviceImage = docker.build("${dockerRepo}/cvierinix/app:${env.BRANCH_NAME}-latest")
+      def serviceImage = docker.build("${dockerRepo}/app:${env.BRANCH_NAME}-latest")
       serviceImage.push()
     }
   }
