@@ -4,8 +4,6 @@ def dockerRepo = 'app'
 
 
 node () {
-  def workspace = pwd()
-
   stage('Preparation') {
     checkout([
       $class: 'GitSCM',
@@ -17,7 +15,7 @@ node () {
 
   stage('Dockerize') {
     docker.withRegistry(dockerRegistry, dockerRegistryCredKey) {
-      def serviceImage = docker.build("${dockerRepo}/app:latest" "${workspace}")
+      def serviceImage = docker.build("${dockerRepo}/app:latest")
       serviceImage.push()
     }
   }
