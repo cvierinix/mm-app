@@ -1,4 +1,4 @@
-def dockerRegistry = 'https://index.docker.io'
+def dockerRegistry = 'docker.io'
 def dockerRegistryCredKey = 'docker-registry'
 def dockerRepo = 'cvierinix'
 
